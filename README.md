@@ -4,11 +4,15 @@ Materialien für die [GI_Salzburg Konferenz](https://gi-salzburg.org) vom 05.-07
 
 ## Vortrag: Umweltdaten mit Microservices verarbeiten und veröffentlichen
 
-- Vortragende: Jakob Miksch, Christian Mayer - meggsimum - Büro für Geoinformatik (Christian Mayer), Deutschland
-- Link Folien: https://meggsimum.github.io/gi-salzburg2022/umweltdaten-microservices
-- Link PDF: TODO
-- Link Session: https://www.conftool.com/gi-salzburg2022/index.php?page=browseSessions&form_session=469
-- Zusammenfassung:
+Jakob Miksch, Christian Mayer - meggsimum \
+Büro für Geoinformatik (Christian Mayer), Deutschland
+
+Links:
+- [Folien](https://meggsimum.github.io/gi-salzburg2022/umweltdaten-microservices)
+- [PDF]() **TODO**
+- [Session](https://www.conftool.com/gi-salzburg2022/index.php?page=browseSessions&form_session=469)
+
+Zusammenfassung:
 
 > Die wachsende Menge an Umweltdaten sind für Gemeinden und Städte unerlässlich um sich auf zukünftige klimatische Änderungen vorzubereiten und eine nachhaltige Entwicklung zu ermöglichen. Um inhaltliche Erkenntnisse aus der Datengrundlage zu erlangen, ist es erforderlich diese in aufbereiteter und praktisch nutzbarer Form den Entscheidungsträgern und der Öffentlichkeit zu Verfügung zu stellen.
 >
