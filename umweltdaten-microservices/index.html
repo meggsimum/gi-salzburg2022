@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="de">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,
+      maximum-scale=1.0, user-scalable=no" />
+    <meta name="author" content="Jakob Miksch" />
+    <title> Umweltdaten mit Microservices verarbeiten und veröffentlichen |
+      GI_Salzburg 2022</title>
+    <meta name="description" content="Umweltdaten mit Microservices verarbeiten und veröffentlichen |
+    GI_Salzburg 2022"/>
+    <link rel="stylesheet" href="../shared/reveal.js-3.6.0/css/reveal.css" />
+    <link rel="stylesheet" href="../shared/reveal.js-3.6.0/css/theme/white.css"
+      />
+
+    <!-- <link href="https://fonts.googleapis.com/css?family=Inconsolata|Lato|Merriweather" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Cantarell"
+      rel="stylesheet">
+    <link rel="stylesheet" href="../shared/css/customized.css" />
+    <link rel="stylesheet" href="../shared/css/meggsimum.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="../shared/reveal.js-3.6.0/lib/css/zenburn.css"
+      />
+
+    <!-- Printing and PDF exports -->
+    <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ?
+      '../shared/reveal.js-3.6.0/css/print/pdf.css' :
+      '../shared/reveal.js-3.6.0/css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+
+    if (window.location.search.match(/print-pdf/gi)) {
+      var linkCustomPrint = document.createElement('link');
+      linkCustomPrint.rel = 'stylesheet';
+      linkCustomPrint.type = 'text/css';
+      linkCustomPrint.href = '../shared/css/meggsimum-print.css';
+      document.getElementsByTagName('head')[0].appendChild(linkCustomPrint);
+    }
+  </script>
+  </head>
+
+  <body>
+
+    <!-- BEGIN OF SLIDES -->
+
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <img src="/umweltdaten-microservices/img/stations-declustered.png"  style="background:none; border:none; box-shadow:none;">
+          <h4>
+            Umweltdaten mit Microservices verarbeiten und veröffentlichen
+          </h4>
+          <p>
+            <small>Jakob Miksch</small>
+            <br>
+            <small>meggsimum - Büro für Geoinformatik</small>
+          </p>
+          <p>
+            <span style="font-size: large;">GI_Salzburg, 07.07.2022</span>
+          </p>
+        </section>
+
+        <section>
+          <h2>Jakob Miksch</h2>
+          <div class="split-info">
+            <div class="part" style="width:35%">
+              <img src="../shared/img/jakob-miksch.jpg" class="plain"
+                width="200" /><br />
+              <small>
+                <a class="email" href="mailto:jakob@meggsimum">jakob@meggsimum.de</a><br
+                  />
+                <a class="github" href="https://github.com/jakobmiksch">@jakobmiksch</a><br
+                  />
+                <a class="twitter" href="https://twitter.com/jakobmiksch">@jakobmiksch</a><br
+                  />
+              </small><br />
+            </div>
+            <div class="part" style="width:60%">
+              <div class="enumeration">
+                <ul>
+                  <li>Geoinformatiker</li>
+                  <li>Anwendungsentwickler</li>
+                  <li>OSGeo Foundation Charter Member</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+        </section>
+
+        <section>
+          <h2>meggsimum</h2>
+          <div class="split-info">
+            <div class="part" style="width:35%">
+              <img src="../shared/img/meggsimum-logo.png" class="plain"
+                width="400" />
+              <br /><small>
+                <a class="email" href="mailto:info@meggsimum.de">info@meggsimum.de</a>
+                <br/>
+                <a class="github" href="https://github.com/meggsimum/">@meggsimum</a>
+                <br/>
+                <a class="twitter" href="https://twitter.com/meggsimum/">@meggsimum</a>
+              </small>
+            </div>
+            <div class="part" style="width:60%">
+              <div class="enumeration">
+                <ul>
+                  <li><a href="https://meggsimum.de/">meggsimum.de</a></li>
+                  <li>Dienstleistungen im Bereich GIS, Webmapping &amp; GDI</li>
+                  <li>Maßgeschneiderte WebGIS-Lösungen</li>
+                  <li>Softwarekonzepte und Softwareentwicklung</li>
+                  <li>Geodaten</li>
+                  <li>Beratung und Schulung</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div style="clear:both"></div>
+        </section>
+
+        <section>
+          <img src="/umweltdaten-microservices/img/sauber-logo.jpg"  style="background:none; border:none; box-shadow:none;" height="200px">
+          <p style="font-size: x-large;">
+            Satellitenbasiertes System zur Anzeige, Prognose
+            und Simulation von Luftschadstoffen für eine
+            nachhaltige Stadt- und Regionalentwicklung
+          </p>
+          <img src="/umweltdaten-microservices/img/bmdv.png" style="background:none; border:none; box-shadow:none;" height="200px">
+        </section>
+
+        <section>
+          <h2>SAUBER Partner</h2>
+          <img src="/umweltdaten-microservices/img/sauber-partner.png"  style="background:none; border:none; box-shadow:none;" height="300px">
+        </section>
+
+
+        <section>
+          <h2>Gesamtsystem</h2>
+          <img src="/umweltdaten-microservices/img/1_sauber-architektur-gesamtsystem.svg" height="500px" style="background:none; border:none; box-shadow:none;">
+        </section>
+
+
+        <section>
+          <h2>SAUBER Plattform</h2>
+          <img src="/umweltdaten-microservices/img/2_sauber-architektur-plattform.svg" height="500px" style="background:none; border:none; box-shadow:none;">
+        </section>
+
+        <section>
+          <img src="/umweltdaten-microservices/img/overview.png" height="600px" style="background:none; border:none; box-shadow:none;">
+          <p style="font-size: large;">Abbildung von geomer GmbH</p>
+        </section>
+
+        <!--
+          <section>
+            <h2>SAUBER </h2>
+            <strong>ein schnittstellenbasiertes System</strong>
+
+            <ul>
+              <li>Service-orientierte Architektur</li>
+              <li>Geodateninfrastruktur als Basis aller SAUBER Dienste</li>
+              <li>Automatisierte Veröffentlichung von neuen Daten</li>
+              <li>offene Standards</li>
+              <li>Demonstratoren für die Anbindung an standardisierte Geo-Services</li>
+            </ul>
+          </section>
+        -->
+
+        <!--
+          <section>
+            <h2>GDI - Geodateninfrastruktur</h2>
+            <ul>
+              <li>voll automatisiert</li>
+              <li>flexibel durch Microservices</li>
+              <li>erweiterbar auf mehr Regionen und Schadstoffe</li>
+              <li>skalierbar auf größere Last</li>
+            </ul>
+          </section>
+        -->
+
+        <!--
+          <section>
+            <h2>Schnittstellen</h2>
+            <ul>
+              <li>OGC-Standards: WMS, WFS, WCS</li>
+              <li>räumliche Filter</li>
+              <li>zeitliche Filter</li>
+              <li>nutzbar von vielen Clients (Browser, Desktop ...)</li>
+            </ul>
+          </section>
+        -->
+
+        <section>
+          <h2>Datenbank</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <img src="/umweltdaten-microservices/img/postgres-logo.svg" height="200px">
+                </td>
+                <td>
+                  <img src="/umweltdaten-microservices/img/postgis-logo.png" height="200px">
+                </td>
+                <td>
+                  <img src="/umweltdaten-microservices/img/timescale-db-logo.png" height="200px">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  PostgreSQL
+                </td>
+                <td>
+                  PostGIS
+                </td>
+                <td>
+                  TimescaleDB
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>Middleware</h2>
+          <table>
+            <tbody>
+              <tr >
+                <td>
+                  <img src="/umweltdaten-microservices/img/geoserver-logo.svg" height="150px">
+                </td>
+                <td>
+                  <img src="/umweltdaten-microservices/img/nodejs-logo.svg" height="150px">
+                </td>
+                <td>
+                  <img src="/umweltdaten-microservices/img/java-logo.svg" height="150px">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  GeoServer
+                </td>
+                <td>
+                  Node.js
+                </td>
+                <td>
+                  Java
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>Frontend</h2>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <img src="/umweltdaten-microservices/img/unofficial_JavaScript_logo_2.svg" height="200px">
+                </td>
+                <td>
+                  <img src="/umweltdaten-microservices/img/openlayers-logo.svg" height="200px">
+                </td>
+                <td>
+                  <img src="/umweltdaten-microservices/img/vue-js-logo.svg" height="200px">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  JavaScript
+                </td>
+                <td>
+                  OpenLayers
+                </td>
+                <td>
+                  Vue.js
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+        </section>
+
+        <section>
+          <h2>Containerisierung</h2>
+          <img src="/umweltdaten-microservices/img/docker-logo-horizontal.png" style="background:none; border:none; box-shadow:none;">
+        </section>
+
+        <section>
+
+          <h2>CI - Continuous Integration</h2>
+
+          <img src="/umweltdaten-microservices/img/ci-workflow.svg" >
+
+        </section>
+
+        <section>
+          <h2>Open Source</h2>
+
+          Öffentlich zugängliche Code Repositories:
+          <ul>
+            <li><a href="https://github.com/meggsimum/sauber-sdi-docker" target="_blank"><b>sauber-sdi-docker</b></a>
+            </li>
+            <li><a href="https://github.com/meggsimum/sauber-platform-snippets" target="_blank"><b>sauber-platform-snippets</b></a></li>
+            <li><a href="https://github.com/meggsimum/geoserver-node-client" target="_blank"><b>geoserver-node-client</b></a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>GeoServer</h2>
+          <p>
+            <b>~470</b> verfügbare Layer
+          </p>
+          <img src="/umweltdaten-microservices/img/geoserver-screenshot.png" >
+          <a
+            href="https://sauber-sdi.meggsimum.de/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.MapPreviewPage?3&filter=false"
+            target="_blank"
+          >
+            sauber-sdi.meggsimum.de/geoserver
+          </a>
+        </section>
+
+        <section>
+          <h2>Stationsdaten</h2>
+          <p>als  <a href="https://sauber-sdi.meggsimum.de/geoserver/station_data/ows?service=wfs&version=2.0.0&request=GetCapabilities" target="_blank">WFS</a> - in vielen Formaten</p>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <img src="/umweltdaten-microservices/img/stations-simple-overview.png" height="300px">
+                </td>
+                <td>
+                  <img src="/umweltdaten-microservices/img/station-data-json-screenshot.png" height="300px">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Kartendarstellung
+                </td>
+                <td>
+                  Rohdaten
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>Prognosen</h2>
+          <ul>
+            <li>als <a href="https://sauber-sdi.meggsimum.de/geoserver/image_mosaics/ows?service=wms&version=1.3.0&request=GetCapabilities" target="_blank">WMS</a> oder
+              <a href="https://sauber-sdi.meggsimum.de/geoserver/image_mosaics/ows?service=WCS&version=2.0.1&request=GetCapabilities" target="_blank">WCS</a></li>
+            <li>für NRW und Stuttgart</li>
+          </ul>
+          <img src="/umweltdaten-microservices/img/forecast_screenshot.png">
+        </section>
+
+        <section>
+          <h2>Simulation</h2>
+          <ul>
+            <li>als <a href="https://sauber-sdi.meggsimum.de/geoserver/simulation/ows?service=wms&version=1.3.0&request=GetCapabilities" target="_blank">WMS</a> oder
+              <a href="https://sauber-sdi.meggsimum.de/geoserver/simulation/ows?service=WCS&version=2.0.1&request=GetCapabilities" target="_blank">WCS</a></li>
+            <li>für verschiedene Untersuchungsgebiete</li>
+          </ul>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <img src="/umweltdaten-microservices/img/simulation_current_glasmacherviertel_no2.png" height="300px">
+                </td>
+                <td>
+                  <img src="/umweltdaten-microservices/img/simulation_change_glasmacherviertel_no2.png" height="300px">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Ist-Zustand
+                </td>
+                <td>
+                  Modifikation
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>Demo: <a href="https://sauber-projekt.meggsimum.de/station-viewer">Station Viewer</a></h2>
+          <video src="/umweltdaten-microservices/video/POI_Viewer_2021-04-28_14-16-09.mp4" controls height="350" />
+        </section>
+
+        <section>
+          <h2>Demo: <a href="https://sauber-projekt.meggsimum.de/wms-time-viewer/">Time Viewer</a></h2>
+          <video src="/umweltdaten-microservices/video/WMS-Time-Viewer-2021-11-24.mp4" controls height="350"/>
+        </section>
+
+        <section>
+          <img src="/umweltdaten-microservices/img/klips_logo.png" style="background:none; border:none; box-shadow:none;" height="200px">
+          <p style="font-size: x-large;">
+            KI-basierte Informationsplattform für die Lokalisierung und Simulation von Hitzeinseln für eine innovative Stadt- und Verkehrsplanung
+          </p>
+          <img src="/umweltdaten-microservices/img/bmdv.png" style="background:none; border:none; box-shadow:none;" height="200px">
+        </section>
+
+        <section>
+          <h2>KLIPS Partner</h2>
+          <img src="/umweltdaten-microservices/img/klips-partner.png"  style="background:none; border:none; box-shadow:none;" height="400px">
+        </section>
+
+        <section data-markdown>
+          <textarea data-template>
+            ## Links
+
+            - [SAUBER Projekt](https://sauber-projekt.de)
+            - [KLIPS Projekt](https://www.klips-projekt.de/)
+            - [Time Viewer Demo](https://sauber-projekt.meggsimum.de/wms-time-viewer/)
+            - [Station Viewer Demo](https://sauber-projekt.meggsimum.de/station-viewer)
+            - [meggsimum Firma](https://meggsimum.de/)
+          </textarea>
+        </section>
+
+        <section>
+          <h2>Impressum</h2>
+          <h4>Autor</h4>
+          <div style="">
+            <address style="">
+              <strong>Jakob Miksch</strong><br />
+              <span style="font-size: smaller;">
+                meggsimum - Büro für Geoinformatik (Christian Mayer)<br />
+                Schillerstraße 2a<br />
+                67122 Mutterstadt<br />
+                <a href="mailto:info@meggsimum.de">info@meggsimum.de</a>
+              </span>
+            </address>
+          </div>
+          <h4 style="margin-top: 20px;">Lizenz</h4>
+          <p>
+            Diese Folien sind unter <a
+              href="http://creativecommons.org/licenses/by-sa/2.0/">CC BY-SA</a>
+            veröffentlicht.
+          </p>
+
+            <p>
+              <a href="https://meggsimum.github.io/gi-salzburg2022/umweltdaten-microservices">Vortragsfolien</a>,
+              <a
+              href="https://meggsimum.github.io/gi-salzburg2022/umweltdaten-microservices/umweltdaten-microservices.pdf">PDF-Version</a>,
+              <a href="https://github.com/meggsimum/gi-salzburg2022">git repository</a>
+            </p>
+
+        </section>
+
+      </div>
+    </div>
+
+
+    <!-- END OF SLIDES -->
+
+
+    <script src="../shared/reveal.js-3.6.0/lib/js/head.min.js"></script>
+    <script src="../shared/reveal.js-3.6.0/js/reveal.js"></script>
+    <script>
+    (function () {
+      var revealPath = '../shared/reveal.js-3.6.0/';
+      // More info https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+          {
+            src: revealPath + 'plugin/markdown/marked.js'
+          },
+          {
+            src: revealPath + 'plugin/markdown/markdown.js'
+          },
+          {
+            src: revealPath + 'plugin/notes/notes.js',
+            async: true
+          },
+          {
+            src: revealPath + 'plugin/highlight/highlight.js',
+            async: true,
+            callback: function () {
+              hljs.initHighlightingOnLoad();
+            }
+          }
+        ]
+      });
+    }());
+  </script>
+  </body>
+
+</html>
