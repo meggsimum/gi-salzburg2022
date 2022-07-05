@@ -9,7 +9,7 @@ Büro für Geoinformatik (Christian Mayer), Deutschland
 
 Links:
 - [Folien](https://meggsimum.github.io/gi-salzburg2022/umweltdaten-microservices)
-- [PDF](umweltdaten-microservices.pdf)
+- [PDF](https://meggsimum.github.io/gi-salzburg2022/umweltdaten-microservices.pdf)
 - [Session](https://www.conftool.com/gi-salzburg2022/index.php?page=browseSessions&form_session=469)
 
 Zusammenfassung:
